@@ -1061,6 +1061,9 @@
     nav { padding: 20px 24px; }
     .nav-links { display: none; }
     .hero { padding: 0 24px; }
+    .hero-actions { flex-direction: column; gap: 16px; margin-top: 32px; width: 100%; }
+    .btn-primary { width: 100%; padding: 14px 24px; text-align: center; }
+    .btn-ghost { width: 100%; justify-content: center; padding: 12px 0; }
     .hero-stats { right: 24px; bottom: 40px; }
     .scroll-indicator { left: 24px; bottom: 40px; }
     .about, .services { padding: 80px 24px; }

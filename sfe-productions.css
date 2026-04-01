@@ -7,7 +7,7 @@
     --charcoal: #141414;
     --dark-grey: #1E1E1E;
     --mid-grey: #2A2A2A;
-    --light-grey: #888;
+    --light-grey: #dbdada;
     --white: #F5F0E8;
     --cream: #EDE5D0;
   }
@@ -143,6 +143,15 @@
       radial-gradient(ellipse 40% 40% at 20% 80%, rgba(201,168,76,0.04) 0%, transparent 50%),
       linear-gradient(135deg, #050505 0%, #0a0a0a 50%, #050505 100%);
   }
+  .hero-bg img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0.7;
+    pointer-events: none;
+  }
 
   .hero-film-strip {
     position: absolute;
@@ -151,7 +160,7 @@
     bottom: 0;
     width: 45%;
     overflow: hidden;
-    opacity: 0.12;
+    opacity: 0.65;
   }
 
   .film-strip-inner {
@@ -172,6 +181,15 @@
     aspect-ratio: 4/3;
     border: 1px solid #222;
     position: relative;
+    overflow: hidden;
+  }
+  .film-cell img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0.9;
   }
   .film-cell::before, .film-cell::after {
     content: '';
@@ -180,6 +198,7 @@
     width: 8px; height: 8px;
     border-radius: 50%;
     border: 1px solid #333;
+    z-index: 1;
   }
   .film-cell::before { left: 6px; }
   .film-cell::after { right: 6px; }
@@ -437,6 +456,14 @@
     border: 1px solid #222;
     overflow: hidden;
   }
+  .about-frame-main img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0.8;
+  }
   .about-frame-main::before {
     content: '';
     position: absolute;
@@ -450,6 +477,7 @@
         rgba(201,168,76,0.03) 3px,
         rgba(201,168,76,0.03) 4px
       );
+    z-index: 1;
   }
   .about-frame-accent {
     position: absolute;
@@ -458,6 +486,15 @@
     height: 45%;
     background: linear-gradient(135deg, #1c1a10, #0f0e07);
     border: 1px solid var(--gold-dim);
+    overflow: hidden;
+  }
+  .about-frame-accent img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0.75;
   }
   .about-frame-accent::after {
     content: 'BTS';
@@ -469,6 +506,7 @@
     color: var(--gold-dim);
     letter-spacing: 0.2em;
     opacity: 0.3;
+    z-index: 2;
   }
 
   .about-badge {
@@ -592,6 +630,29 @@
   .service-card:hover .service-icon { background: rgba(201,168,76,0.15); }
   .service-icon svg { width: 24px; height: 24px; stroke: var(--gold); fill: none; stroke-width: 1.5; }
 
+  .service-preview {
+    width: 100%;
+    height: 200px;
+    background: var(--dark-grey);
+    margin-bottom: 24px;
+    border: 1px solid rgba(201,168,76,0.1);
+    overflow: hidden;
+    position: relative;
+  }
+  .service-preview img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0.8;
+    transition: transform 0.4s ease, opacity 0.4s ease;
+  }
+  .service-card:hover .service-preview img {
+    transform: scale(1.08);
+    opacity: 1;
+  }
+
   .service-title {
     font-family: 'Cormorant Garamond', serif;
     font-size: 1.55rem;
@@ -648,7 +709,7 @@
   .portfolio-item:first-child { grid-row: span 2; }
 
   .portfolio-aspect {
-    padding-bottom: 75%;
+    padding-bottom: 94%;
     position: relative;
   }
   .portfolio-item:first-child .portfolio-aspect { padding-bottom: 90%; }
@@ -661,7 +722,23 @@
     transition: transform 0.6s ease;
     display: flex; align-items: center; justify-content: center;
   }
-  .portfolio-item:hover .portfolio-bg { transform: scale(1.07); }
+  .portfolio-bg img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center bottom;
+    opacity: 0.75;
+    transition: transform 0.6s ease, opacity 0.6s ease;
+  }
+  .portfolio-item:hover .portfolio-bg {
+    transform: scale(1.08);
+  }
+  .portfolio-item:hover .portfolio-bg img {
+    transform: scale(1.06);
+    opacity: 0.95;
+  }
 
   .portfolio-bg-1 {
     background: linear-gradient(135deg, #1a1207 0%, #0d0b05 50%, #1a120a 100%);
@@ -699,7 +776,7 @@
     flex-direction: column;
     justify-content: flex-end;
     opacity: 0;
-    transition: opacity 0.4s;
+    transition: opacity 0.5s ease;
   }
   .portfolio-item:hover .portfolio-overlay { opacity: 1; }
 
@@ -709,12 +786,20 @@
     text-transform: uppercase;
     color: var(--gold);
     margin-bottom: 8px;
+    transition: transform 0.5s ease 0.1s;
+  }
+  .portfolio-item:hover .portfolio-tag {
+    transform: translateY(-4px);
   }
   .portfolio-name {
     font-family: 'Cormorant Garamond', serif;
     font-size: 1.4rem;
     color: var(--white);
     font-weight: 300;
+    transition: transform 0.5s ease 0.15s;
+  }
+  .portfolio-item:hover .portfolio-name {
+    transform: translateY(-4px);
   }
   .portfolio-item:first-child .portfolio-name { font-size: 2rem; }
 
@@ -722,12 +807,15 @@
   .portfolio-frame {
     position: absolute;
     top: 16px; left: 16px; right: 16px; bottom: 16px;
-    border: 1px solid rgba(201,168,76,0.12);
+    border: 2px solid rgba(201,168,76,0.3);
     pointer-events: none;
     opacity: 0;
-    transition: opacity 0.4s;
+    transition: opacity 0.4s ease, border-color 0.4s ease;
   }
-  .portfolio-item:hover .portfolio-frame { opacity: 1; }
+  .portfolio-item:hover .portfolio-frame { 
+    opacity: 1;
+    border-color: rgba(201,168,76,0.6);
+  }
 
   /* TESTIMONIALS */
   .testimonials {
@@ -798,6 +886,13 @@
     font-size: 1rem;
     color: var(--gold-light);
     font-weight: 600;
+    overflow: hidden;
+  }
+  .author-avatar img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
   }
   .author-info { flex: 1; }
   .author-name {
@@ -913,7 +1008,7 @@
     font-family: 'Bebas Neue', sans-serif;
     font-size: 1.4rem;
     letter-spacing: 0.15em;
-    color: var(--white);
+    color: white;
   }
   .footer-logo span { color: var(--gold); }
 
@@ -932,12 +1027,12 @@
     border: 1px solid #222;
     display: flex; align-items: center; justify-content: center;
     text-decoration: none;
-    transition: border-color 0.3s, background 0.3s;
+    transition: border-color 0.3s, background 0.3s, color 0.3s;
     cursor: none;
+    color: var(--white);
   }
-  .social-link:hover { border-color: var(--gold); background: rgba(201,168,76,0.08); }
-  .social-link svg { width: 16px; height: 16px; stroke: var(--light-grey); fill: none; stroke-width: 1.5; transition: stroke 0.3s; }
-  .social-link:hover svg { stroke: var(--gold); }
+  .social-link:hover { border-color: var(--gold); background: rgba(201,168,76,0.08); color: var(--gold); }
+  .social-link svg { width: 16px; height: 16px; stroke: currentColor; fill: none; stroke-width: 1.5; transition: stroke 0.3s, fill 0.3s; }
 
   /* Scroll animation */
   .reveal {
